@@ -1,8 +1,9 @@
 import SEO from "../components/SEO";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function Home({ popular }) {
+  const router = useRouter();
   // const [movies, setMovies] = useState();
   // useEffect(() => {
   //   const popular = async () => {
@@ -15,16 +16,16 @@ export default function Home({ popular }) {
   return (
     <>
       <SEO title="Home" />
-      <h1>THIS IS HOME</h1>
       {popular ? (
         popular.map((movie) => {
           return (
             <div key={movie.id}>
               <Image
-                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                 alt={`${movie.original_title}`}
                 width={500}
                 height={500}
+                onClick={() => router.push(`/movies/${movie.id}`)}
               />
               <div>{movie.original_title}</div>;
             </div>
