@@ -25,7 +25,9 @@ export default function Home({ popular }) {
                 alt={`${movie.original_title}`}
                 width={500}
                 height={500}
-                onClick={() => router.push(`/movies/${movie.id}`)}
+                onClick={() =>
+                  router.push(`/movies/${movie.original_title}/${movie.id}`)
+                }
               />
               <div>{movie.original_title}</div>;
             </div>
