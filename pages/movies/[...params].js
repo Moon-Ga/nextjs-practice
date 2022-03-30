@@ -1,12 +1,19 @@
-import { useRouter } from "next/router";
+import SEO from "../../components/SEO";
 
-export default function MovieDetail() {
-  const router = useRouter();
-  console.log(router.query);
-  const [title, id] = router.query.params || [];
+export default function MovieDetail({ params }) {
+  const [title, id] = params;
   return (
     <div>
+      <SEO title={title} />
       <h4>{title}</h4>
     </div>
   );
+}
+
+export async function getServerSideProps({ params: { params } }) {
+  return {
+    props: {
+      params,
+    },
+  };
 }

@@ -1,16 +1,11 @@
 import Layout from "../components/Layout";
+import "../styles/globals.css";
 
-export default function App({ Component, pageProps }) {
+const App = ({ Component, pageProps }) => {
   return (
     <Layout>
       <Component {...pageProps} />
-      <style jsx global>
-        {`
-          a {
-            color: grey;
-          }
-        `}
-      </style>
     </Layout>
   );
-}
+};
+export default App;
